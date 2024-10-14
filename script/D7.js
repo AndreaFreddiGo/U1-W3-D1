@@ -65,6 +65,15 @@ sumTotalReduce(random100())
   Scrivi una funzione che, dato un array di soli numeri e un numero n come parametri, ritorni un secondo array con tutti i valori del precedente incrementati di n
 */
 
+const increaseArray = (array, n) => {
+  increasedArray = array.map((num) => {
+    return num + n
+  })
+  return console.log(increasedArray)
+}
+
+increaseArray(random100(), 55)
+
 /* ESERCIZIO 7 (map)
   Scrivi una funzione che, dato un array di stringhe, ritorni un nuovo array contenente le lunghezze delle rispettive stringhe dell'array di partenza
   es.: ["EPICODE", "is", "great"] => [7, 2, 5]
@@ -216,18 +225,17 @@ const movies = [
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
 
-// const oldestMovie = function (array) {
-//   let oldest = movies[0].Year
-//   let oldestTitle = movies[0].Title
-//   array.forEach((num) => {
-//     if (movies[num].Year < oldest) {
-//       oldestTitle = movies[num].Title
-//     }
-//   })
-//   return console.log(oldestTitle)
-// }
+const findOldest = (array) => {
+  let oldestMovie = array[0]
+  array.forEach((movie) => {
+    if (movie.Year < oldestMovie.Year) {
+      oldestMovie = movie
+    }
+  })
+  return console.log(oldestMovie)
+}
 
-// oldestMovie(movies)
+findOldest(movies)
 
 /* ESERCIZIO 10
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
@@ -241,9 +249,9 @@ totalMovies(movies)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
 
-const movieTitle = function (array) {
+const movieTitle = (array) => {
   moviesTitles = array.map((movie) => {
-    return movies[movie].Title
+    return movie.Title
   })
   return console.log(moviesTitles)
 }
@@ -254,14 +262,50 @@ movieTitle(movies)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
 
+const filterMillenium = function (array) {
+  milleniumMovies = array.filter((movie) => {
+    return movie.Year > 2000
+  })
+  return console.log(milleniumMovies)
+}
+
+filterMillenium(movies)
+
 /* ESERCIZIO 13 (reduce)
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
+
+const sumYears = (array) => {
+  totalYears = movies.reduce((acc, movie) => {
+    return acc + parseInt(movie.Year)
+  }, 0)
+  return console.log(totalYears)
+}
+
+sumYears(movies)
 
 /* ESERCIZIO 14 (find)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
 
+const findMovie = (array, ID) => {
+  specificMovie = array.find((movie) => {
+    return movie.imdbID === ID
+  })
+  return console.log(specificMovie)
+}
+
+findMovie(movies, 'tt0167260')
+
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
 */
+
+const findIndexMovie = (array, year) => {
+  specificMovie = array.findIndex((movie) => {
+    return movie.Year === year
+  })
+  return console.log(specificMovie)
+}
+
+findIndexMovie(movies, '2012')

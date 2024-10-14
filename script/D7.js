@@ -241,6 +241,15 @@ totalMovies(movies)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
 
+const movieTitle = function (array) {
+  moviesTitles = array.map((movie) => {
+    return movies[movie].Title
+  })
+  return console.log(moviesTitles)
+}
+
+movieTitle(movies)
+
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
